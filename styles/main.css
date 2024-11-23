@@ -1,0 +1,661 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #000000;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden; /* Add this line */
+}
+
+.sidebar {
+    width: 250px;
+    min-width: 250px;
+    height: 100vh;
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 20px;
+    overflow-y: auto;
+    position: sticky; /* Add this line */
+    top: 0; /* Add this line */
+    left: 0; /* Add this line */
+}
+
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    height: 100vh;
+    width: calc(100% - 250px); /* Add this line */
+}
+
+.pages-container {
+    width: 100%;
+    height: 100%;
+    position: relative; /* Add this line */
+}
+.profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.profile h1 {
+    margin: 10px 0;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Increased gap for more space between icons */
+}
+
+.social-links a {
+    display: inline-block;
+}
+
+.social-links img {
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+}
+
+nav {
+    width: 100%;
+    margin-top: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    margin-bottom: 15px;
+}
+
+nav ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 5px; /* Added for smoother hover effect */
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+/* Main content */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.pages-container {
+    width: 100%;
+    min-height: 100vh;
+    transition: transform 0.3s ease-out;
+}
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #000000;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+    overflow: hidden;
+}
+
+.profile-section {
+    flex: 0 0 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.about-profile-image {
+    width: 300px;
+    height: 440px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.profile-section h3 {
+    margin-top: 1rem;
+    font-size: 1.5em;
+}
+
+.tagline {
+    font-style: italic;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.info-section {
+    flex: 0 0 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.info-section::-webkit-scrollbar {
+    display: none;
+}
+
+.bio, .experience, .projects {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.skills-section {
+    flex: 0 0 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.skills-section::-webkit-scrollbar {
+    display: none;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-category h4 {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.skill-category ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skill-category li {
+    background-color: #e0e0e0;
+    padding: 0.3rem 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: 20px;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+h3 {
+    color: #000000;
+    font-weight: 700;
+}
+
+ul {
+    padding-left: 1.2rem;
+}
+
+.slide-in {
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.slide-in.from-left {
+    transform: translateX(-50px);
+}
+
+.slide-in.from-right {
+    transform: translateX(50px);
+}
+
+.slide-in.from-bottom {
+    transform: translateY(50px);
+}
+
+.slide-in.appear {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#contact-form input,
+#contact-form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Contact form button specific styles */
+#contact-form button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background-color: #2c3e50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#contact-form button:hover {
+    background-color: #34495e;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* New styles for the home page */
+.home-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 2rem;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.home-page header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-page .logo {
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.home-page .top-nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.home-page .top-nav ul li {
+    margin-left: 2rem;
+}
+
+.home-page .top-nav ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+}
+
+.home-page .home-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    background-color: transparent;
+    padding: 0;
+}
+
+.home-page .home-content h1 {
+    font-size: 5vw;
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.2;
+    max-width: 80%;
+}
+
+/* ... existing styles ... */
+
+/* Adjust main content to remove empty space */
+.main-content {
+    flex: 1;
+    width: calc(100% - 250px); /* Subtracting sidebar width */
+    margin-left: 0; /* Remove left margin */
+}
+
+.page {
+    width: 100%;
+    height: 100vh;
+    padding: 40px;
+    background-color: #f5f5f5;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Adjust home page specific styles */
+.home-page {
+    padding: 2rem;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* ... rest of the existing styles ... */
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .main-content {
+        width: 100%; /* Full width on small screens */
+    }
+    .about-content {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .profile-section, .info-section, .skills-section {
+        flex: none;
+        width: 100%;
+    }
+
+    .about-profile-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .skills-section {
+        max-height: none;
+    }
+
+    .home-page .home-content h1 {
+        font-size: 8vw;
+    }
+}
+
+p, li, input, textarea, button {
+    font-family: 'Inter', sans-serif;
+}
+
+/* General button styles */
+button, .nav-link, .social-links a {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover, .nav-link:hover, .social-links a:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+/* ... existing styles ... */
+
+/* Resume page styles */
+#resume.page {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: auto;
+}
+
+.resume-content {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    flex-grow: 1;
+    font-size: 12px; /* Adjust base font size */
+    line-height: 1.2; /* Adjust line height */
+}
+
+.resume-content h1 {
+    font-size: 2.5em;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.resume-content h2 {
+    font-size: 1.8em;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.3em;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+.resume-content h3 {
+    font-size: 1.3em;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.resume-content p {
+    margin-bottom: 1em;
+}
+
+.resume-content ul {
+    list-style-type: none;
+    padding-left: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.resume-content ul li {
+    margin-bottom: 0.8em;
+    position: relative;
+}
+
+.resume-content ul li::before {
+    content: "•";
+    position: absolute;
+    left: -1em;
+    color: #2c3e50;
+}
+
+.resume-content .job-title,
+.resume-content .education-degree {
+    font-weight: bold;
+}
+
+.resume-content .job-date,
+.resume-content .education-date {
+    font-style: italic;
+    color: #666;
+}
+
+/* Adjust spacing between sections */
+.resume-content section {
+    margin-bottom: 2em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .resume-content {
+        font-size: 14px; /* Smaller font size for mobile */
+        padding: 20px;
+    }
+
+    .resume-content h1 {
+        font-size: 2em;
+    }
+
+    .resume-content h2 {
+        font-size: 1.5em;
+    }
+
+    .resume-content h3 {
+        font-size: 1.2em;
+    }
+}
+
+.resume-download {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #2c3e50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.download-button:hover {
+    background-color: #34495e;
+    transform: translateY(-3px);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    #resume.page {
+        padding: 20px;
+    }
+
+    .resume-content {
+        padding: 20px;
+    }
+}
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #resume.page {
+        padding: 20px;
+    }
+
+    .resume-content {
+        padding: 20px;
+    }
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    min-width: 250px;
+    height: 100vh;
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.pages-container {
+    width: 100%;
+    height: 100%;
+}
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px;
+    background-color: #f5f5f5;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+    }
+
+    .main-content {
+        width: 100%;
+        height: calc(100vh - 250px); /* Adjust based on your sidebar height on mobile */
+    }
+}
+
+/* ... rest of your existing styles ... */
+.nav-link.active {
+    font-weight: bold;
+    /* Add any other styles you want for the active link */
+}
